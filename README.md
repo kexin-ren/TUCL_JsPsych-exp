@@ -16,9 +16,14 @@ There are three blocks of the test: a heart-only block, a flower-only block, and
 Trials in each block were presented in a fixed pseudorandom order.
 
 
-Citations:
+
+
+#### Citations:
 Ren, K., & Gunderson, E. A. (2019). Malleability of whole-number and fraction biases in decimal comparison. Developmental Psychology, 55(11), 2263–2274. https://doi.org/10.1037/dev0000797
+
 Ren, K., & Gunderson, E. A. (in press). The dynamic nature of children’s strategy use after receiving accuracy feedback in decimal comparisons.
+
 de Leeuw, J. R. (2015). jsPsych: A JavaScript library for creating behavioral experiments in a Web browser. Behavior Research Methods, 47(1), 1–12. https://doi.org/10.3758/s13428-014-0458-y
+
 Wright, A., & Diamond, A. (2014). An effect of inhibitory load in children while keeping working memory load constant. Frontiers in Psychology, 5. https://doi.org/10.3389/fpsyg.2014.00213
 
