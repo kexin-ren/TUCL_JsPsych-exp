@@ -1,7 +1,7 @@
 # JsPysch Experiment Scripts
 ##### Cathy Ren
 
-This repository contains part of online experiment scripts I programmed using JavaScript and JsPsych (de Leeuw, 2015), working in the Temple University Cognition and Learning Lab.
+This repository contains part of online experiment scripts I programmed using JavaScript and [JsPsych](https://www.jspsych.org) (de Leeuw, 2015), while working in the Temple University Cognition and Learning Lab.
 
 ### Number Comparisons:
 Folder include the script **number comparisons.html** programmed to show the participants two numbers at the same time and ask them to choose the larger one, in terms of the magnitudes.
@@ -26,4 +26,3 @@ Ren, K., & Gunderson, E. A. (in press). The dynamic nature of children’s strat
 de Leeuw, J. R. (2015). jsPsych: A JavaScript library for creating behavioral experiments in a Web browser. Behavior Research Methods, 47(1), 1–12. https://doi.org/10.3758/s13428-014-0458-y
 
 Wright, A., & Diamond, A. (2014). An effect of inhibitory load in children while keeping working memory load constant. Frontiers in Psychology, 5. https://doi.org/10.3389/fpsyg.2014.00213
-
