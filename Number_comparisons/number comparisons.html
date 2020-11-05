@@ -1,0 +1,362 @@
+<!doctype html>
+<html>
+
+    <head>
+        <title>Number Comparisons</title>
+        <!-- Load jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+         <!-- Load the jspsych library and plugins -->
+        <script src="jspsych-6.0.5/jspsych.js"></script>
+        <script src="jspsych-6.0.5/plugins/jspsych-html-keyboard-response.js"></script>
+        <script src="jspsych-6.0.5/plugins/jspsych-html-button-response.js"></script>
+        <script src="jspsych-6.0.5/plugins/jspsych-image-keyboard-response.js"></script>
+        <script src="jspsych-6.0.5/plugins/jspsych-instructions.js"></script>
+        <script src="jspsych-6.0.5/plugins/jspsych-fullscreen.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="jspsych-6.0.5/css/jspsych.css" rel="stylesheet" type="text/css"></link>
+        <link href="jspsych-6.0.5/css/style.css" rel="stylesheet" type="text/css"></link>
+        <style>
+        .jspsych-survey-text-question  { font-size: 30px; }
+        .jspsych-survey-text-preamble  { font-size: 30px; }
+        .jspsych-survey-text-response  { font-size: 30px; }
+        </style>
+    </head>
+
+    <body>
+    </body>
+
+    <script>
+
+
+     var fullscreen = {
+       type: 'fullscreen',
+       fullscreen_mode:true,
+     };
+        //Ask for ID and condition
+        var subject_id = prompt("Please enter student subject ID");
+        var condition_id = prompt("Please enter student condition ID")
+
+        /* -------------------- decimal comparison -------------------- */
+
+        var insdc_1 = {
+          type: 'instructions',
+          data: {
+            trial_id: 'instruction'
+          },
+          pages: [
+            "<p class='ins-lower'>In this session, you will see a series of numerical pairs that look similar to this:</p>"+
+               "<div class = 'ins-left'>0.42</div>" +"<div class = 'ins-right'>0.56</div>" +
+               "<div class='in-lowest'><p class='small-line'>Press the <a class='yellow-color'>yellow</a> button (A) when the number on the <a class='yellow-color'>left</a> is bigger</p>" +
+               "<p class='small-line'>Press the <a class='blue-color'>blue</a> button (L) when the number on the <a class='blue-color'>right</a> is bigger</p>" +
+               "<p class='small-line'>For example, in this case you would press the the <a class='blue-color'>blue</a> button （L).</p>"+
+               "<p class='small-line'>You should respond as quickly and accurately as you can.</p>"+
+               "<p class='small-line'>Press Space to begin.</p></div>"
+            ],
+            allow_keys:true,
+            key_forward:32,
+        };
+
+        var insdc_2 = {
+          type: 'instructions',
+          data: {
+            trial_id: 'instruction'
+          },
+          pages:[ "<p class='block-text'>Are you ready to play more games?</p>"+
+                  "<p class='block-text'>Press Space to continue.</p>"],
+            allow_keys:true,
+            key_forward:32,
+        };
+
+
+        var stimuli_1 = [
+          ['0.22','0.8','incongruent',76,'right','0.8','0.22'],['0.64','0.3','congruent',65,'left','0.64','0.3'],['0.2','0.95','congruent',76,'right','0.95','0.2'],
+          ['0.79','0.5','congruent',65,'left','0.79','0.5'],['0.8','0.26','incongruent',65,'left','0.8','0.26'],['0.23','0.4','incongruent',76,'right','0.4','0.23'],
+          ['0.4','0.86','congruent',76,'right','0.86','0.4'],['0.7','0.43','incongruent',65,'left','0.7','0.43'],['0.94','0.3','congruent',65,'left','0.94','0.3'],
+          ['0.6','0.98','congruent',76,'right','0.98','0.6'],['0.44','0.5','incongruent',76,'right','0.5','0.44'],['0.15','0.7','incongruent',76,'right','0.7','0.15'],
+          ['0.88','0.4','congruent',65,'left','0.88','0.4'],['0.7','0.12','incongruent',65,'left','0.7','0.12'],['0.3','0.78','congruent',76,'right','0.78','0.3'],
+          ['0.2','0.54','congruent',76,'right','0.54','0.2'],['0.36','0.8','incongruent',76,'right','0.8','0.36'],['0.45','0.7','incongruent',76,'right','0.7','0.45'],
+          ['0.45','0.3','congruent',65,'left','0.45','0.3'],['0.22','0.7','incongruent',76,'right','0.7','0.22'],['0.59','0.4','congruent',65,'left','0.59','0.4'],
+          ['0.2','0.45','congruent',76,'right','0.45','0.2'],['0.67','0.9','incongruent',76,'right','0.9','0.67'],['0.7','0.25','incongruent',65,'left','0.7','0.25'],
+          ['0.2','0.87','congruent',76,'right','0.87','0.2'],['0.4','0.21','incongruent',65,'left','0.4','0.21'],['0.93','0.2','congruent',65,'left','0.93','0.2'],
+          ['0.6','0.22','incongruent',65,'left','0.6','0.22'],['0.2','0.33','congruent',76,'right','0.33','0.2'],['0.51','0.9','incongruent',76,'right','0.9','0.51'],
+          ['0.4','0.56','congruent',76,'right','0.56','0.4'],['0.6','0.77','congruent',76,'right','0.77','0.6'],['0.73','0.9','incongruent',76,'right','0.9','0.73'],
+          ['0.11','0.6','incongruent',76,'right','0.6','0.11'],['0.6','0.43','incongruent',65,'left','0.6','0.43'],['0.97','0.3','congruent',65,'left','0.97','0.3'],
+          ['0.65','0.7','incongruent',76,'right','0.7','0.65'],['0.2','0.94','congruent',76,'right','0.94','0.2'],['0.9','0.62','incongruent',65,'left','0.9','0.62'],
+          ['0.2','0.74','congruent',76,'right','0.74','0.2'],['0.96','0.5','congruent',65,'left','0.96','0.5'],['0.8','0.31','incongruent',65,'left','0.8','0.31'],
+          ['0.9','0.23','incongruent',65,'left','0.9','0.23'],['0.36','0.7','incongruent',76,'right','0.7','0.36'],['0.2','0.98','congruent',76,'right','0.98','0.2'],
+          ['0.97','0.2','congruent',65,'left','0.97','0.2'],['0.8','0.64','incongruent',65,'left','0.8','0.64'],['0.79','0.6','congruent',65,'left','0.79','0.6'],
+          ['0.27','0.9','incongruent',76,'right','0.9','0.27'],['0.8','0.73','incongruent',65,'left','0.8','0.73'],['0.68','0.2','congruent',65,'left','0.68','0.2'],
+          ['0.4','0.11','incongruent',65,'left','0.4','0.11'],['0.98','0.2','congruent',65,'left','0.98','0.2'],['0.4','0.96','congruent',76,'right','0.96','0.4'],
+          ['0.9','0.28','incongruent',65,'left','0.9','0.28'],['0.22','0.3','incongruent',76,'right','0.3','0.22'],['0.3','0.99','congruent',76,'right','0.99','0.3'],
+          ['0.35','0.9','incongruent',76,'right','0.9','0.35'],['0.5','0.87','congruent',76,'right','0.87','0.5'],['0.97','0.6','congruent',65,'left','0.97','0.6'],
+          ['0.8','0.46','incongruent',65,'left','0.8','0.46'],['0.7','0.63','incongruent',65,'left','0.7','0.63'],['0.89','0.5','congruent',65,'left','0.89','0.5'],
+          ['0.5','0.76','congruent',76,'right','0.76','0.5'],['0.9','0.31','incongruent',65,'left','0.9','0.31'],['0.73','0.2','congruent',65,'left','0.73','0.2'],
+          ['0.16','0.8','incongruent',76,'right','0.8','0.16'],['0.5','0.97','congruent',76,'right','0.97','0.5'],['0.9','0.43','incongruent',65,'left','0.9','0.43'],
+          ['0.41','0.6','incongruent',76,'right','0.6','0.41'],['0.98','0.7','congruent',65,'left','0.98','0.7'],['0.83','0.2','congruent',65,'left','0.83','0.2'],
+          ['0.8','0.14','incongruent',65,'left','0.8','0.14'],['0.3','0.58','congruent',76,'right','0.58','0.3'],['0.99','0.4','congruent',65,'left','0.99','0.4'],
+          ['0.12','0.8','incongruent',76,'right','0.8','0.12'],['0.3','0.85','congruent',76,'right','0.85','0.3'],['0.53','0.8','incongruent',76,'right','0.8','0.53'],
+          ['0.5','0.41','incongruent',65,'left','0.5','0.41'],['0.3','0.95','congruent',76,'right','0.95','0.3'],['0.88','0.3','congruent',65,'left','0.88','0.3'],
+          ['0.25','0.6','incongruent',76,'right','0.6','0.25'],['0.9','0.57','incongruent',65,'left','0.9','0.57'],['0.55','0.3','congruent',65,'left','0.55','0.3'],
+        ]
+
+        var dcstims_1 = []
+        for (i=0; i<84; i++){
+          stims_1 = [{
+            stimulus:'<div class = decision-left> '+ stimuli_1[i][0] +' </div>' +
+                  '<div class = decision-right> '+ stimuli_1[i][1] +' </div>',
+            feedback_correct: "<div style='color:green'; ><p class='fblower'><i class='fa fa-check';></i>   Correct!</p></div>"+
+            "<div class = decision-left> "+ stimuli_1[i][0] +" </div><div class = decision-right> "+ stimuli_1[i][1] +" </div>"+
+            "<img class = 'img-" +stimuli_1[i][4]+ "' src = 'img/border.png'></img>"+
+            "<p class=lower> " + stimuli_1[i][5] + " is bigger than " + stimuli_1[i][6]+ "</strong>.</p>"+
+            "<p class=lowest> Press any key to continue.</p>",
+            feedback_incorrect: "<div style='color:red';><p class= 'fblower'><i class='fa fa-close';></i>    Incorrect!</p></div>"+
+            "<div class = decision-left> "+ stimuli_1[i][0] +" </div><div class = decision-right> "+ stimuli_1[i][1] +" </div>"+
+            "<img class = 'img-" +stimuli_1[i][4]+ "' src = 'img/border.png'></img>"+
+            "<p class=lower> " + stimuli_1[i][5] + " is bigger than " + stimuli_1[i][6]+ "</strong>.</p>"+
+            "<p class=lowest> Press any key to continue.</p>",
+            data:{
+              congruency: stimuli_1[i][2],
+              correct_ans: stimuli_1[i][3]
+            }
+          }]
+          for (a = 0; a<stims_1.length; a++){
+            dcstims_1.push(stims_1[a])
+          }
+              }
+
+
+        var get_feedback = function(){
+          var response = jsPsych.data.get().last(1).values()[0].correct;
+          if(response){
+            return jsPsych.timelineVariable('feedback_correct',true);
+          }else{
+            return jsPsych.timelineVariable('feedback_incorrect',true);
+          }
+        }
+
+        /* the experimental condition - with feedback */
+        var dc_test_1 = {
+          timeline:[
+            {
+            type:'html-keyboard-response',
+            stimulus: jsPsych.timelineVariable('stimulus'),
+            choices:['a','l'],
+            data: jsPsych.timelineVariable('data'),
+            on_finish: function(data){
+            data.correct = data.key_press == data.correct_ans;
+            jsPsych.data.addDataToLastTrial({
+              SubjectID: subject_id,
+              trial_id:'dc_training',
+              condition: condition_id,
+            })
+          }
+          },
+          {
+            type: 'html-keyboard-response',
+            stimulus: get_feedback,
+            on_finish: function(data){
+              jsPsych.data.addDataToLastTrial({
+                SubjectID: subject_id,
+                trial_id:'dc_fb',
+                condition: condition_id,
+              })
+            }
+          }
+        ],
+            timeline_variables: dcstims_1,
+             }
+
+      /* the control condition - without feedback */
+      var dc_test_0={
+        timeline:[
+          {
+            type:'html-keyboard-response',
+            stimulus: jsPsych.timelineVariable('stimulus'),
+            choices:['a','l'],
+            data: jsPsych.timelineVariable('data'),
+            on_finish: function(data){
+            data.correct = data.key_press == data.correct_ans;
+            jsPsych.data.addDataToLastTrial({
+              SubjectID: subject_id,
+              trial_id:'dc_training',
+              condition: condition_id,
+          })}},
+          {
+            type: 'html-keyboard-response',
+            stimulus: '<p class="block-text"> Press any key to continue.</p>',
+            on_finish: function(data){
+              jsPsych.data.addDataToLastTrial({
+                SubjectID: subject_id,
+                trial_id:'dc_fb_control',
+                condition: condition_id,
+              })
+            }
+          }
+        ],
+        timeline_variables: dcstims_1,
+      }
+
+      var stimuli_2 = [
+        ['0.3','0.21','incongruent',65],['0.71','0.8','incongruent',76],['0.48','0.3','congruent',65],['0.2','0.37','congruent',76],
+        ['0.77','0.9','incongruent',76],['0.8','0.67','incongruent',65],['0.7','0.99','congruent',76],['0.49','0.2','congruent',65],
+        ['0.8','0.56','incongruent',65],['0.13','0.4','incongruent',76],['0.67','0.3','congruent',65],['0.2','0.58','congruent',76],
+        ['0.33','0.7','incongruent',76],['0.8','0.42','incongruent',65],['0.2','0.64','congruent',76],['0.75','0.3','congruent',65],
+        ['0.6','0.14','incongruent',65],['0.47','0.9','incongruent',76],['0.79','0.2','congruent',65],['0.2','0.78','congruent',76],
+        ['0.23','0.8','incongruent',76],['0.8','0.27','incongruent',65],['0.2','0.84','congruent',76],['0.89','0.2','congruent',65],
+        ['0.8','0.11','incongruent',65],['0.22','0.9','incongruent',76],['0.99','0.2','congruent',65],['0.2','0.96','congruent',76]
+      ]
+
+      var dcstims_2 = []
+      for (i=0; i<28; i++){
+        stims_2 = [{
+          stimulus:'<div class = decision-left> '+ stimuli_2[i][0] +' </div>' +
+                '<div class = decision-right> '+ stimuli_2[i][1] +' </div>',
+          data:{
+            congruency: stimuli_2[i][2],
+            correct_ans: stimuli_2[i][3]
+          }
+        }]
+        for (a = 0; a<stims_2.length; a++){
+          dcstims_2.push(stims_2[a])
+        }
+            }
+
+      var dcstims_2_rand = jsPsych.randomization.repeat(dcstims_2, 1);
+
+      var dc_test_2 = {
+        timeline:[
+          {
+            type:'html-keyboard-response',
+            stimulus: jsPsych.timelineVariable('stimulus'),
+            choices:['a','l'],
+            data: jsPsych.timelineVariable('data'),
+            on_finish: function(data){
+            data.correct = data.key_press == data.correct_ans;
+            jsPsych.data.addDataToLastTrial({
+              SubjectID: subject_id,
+              trial_id:'T1dcpost1',
+              condition: condition_id,
+          })}},
+        ],
+        timeline_variables: dcstims_2_rand,
+      }
+
+      var stimuli_3 = [
+        ['0.7','0.634','incongruent',65,'oneD'],['0.736','0.8','incongruent',76,'ondD'],['0.2','0.358','congruent',76,'oneD'],['0.798','0.6','congruent',65,'ondD'],
+        ['0.6','0.431','incongruent',65,'oneD'],['0.645','0.8','incongruent',76,'ondD'],['0.5','0.796','congruent',76,'oneD'],['0.584','0.3','congruent',65,'ondD'],
+        ['0.4','0.113','incongruent',65,'oneD'],['0.435','0.7','incongruent',76,'ondD'],['0.6','0.989','congruent',76,'oneD'],['0.877','0.5','congruent',65,'ondD'],
+        ['0.6','0.224','incongruent',65,'oneD'],['0.463','0.8','incongruent',76,'ondD'],['0.4','0.869','congruent',76,'oneD'],['0.979','0.5','congruent',65,'ondD'],
+        ['0.8','0.314','incongruent',65,'oneD'],['0.437','0.9','incongruent',76,'ondD'],['0.3','0.854','congruent',76,'oneD'],['0.976','0.4','congruent',65,'ondD'],
+        ['0.7','0.152','incongruent',65,'oneD'],['0.356','0.9','incongruent',76,'ondD'],['0.2','0.874','congruent',76,'oneD'],['0.965','0.3','congruent',65,'ondD'],
+        ['0.9','0.248','incongruent',65,'oneD'],['0.273','0.9','incongruent',76,'ondD'],['0.2','0.948','congruent',76,'oneD'],['0.985','0.2','congruent',65,'ondD'],
+        ['0.56','0.577','congruent',76,'twoD'],['0.586','0.43','congruent',65,'twoD'],['0.85','0.843','incongruent',65,'twoD'],['0.524','0.69','incongruent',76,'twoD'],
+        ['0.168','0.14','congruent',65,'twoD'],['0.53','0.796','congruent',76,'twoD'],['0.841','0.86','incongruent',76,'twoD'],['0.75','0.514','incongruent',65,'twoD'],
+        ['0.25','0.286','congruent',76,'twoD'],['0.679','0.36','congruent',65,'twoD'],['0.74','0.712','incongruent',65,'twoD'],['0.322','0.64','incongruent',76,'twoD'],
+        ['0.479','0.43','congruent',65,'twoD'],['0.54','0.967','congruent',76,'twoD'],['0.146','0.18','incongruent',76,'twoD'],['0.67','0.253','incongruent',65,'twoD'],
+        ['0.52','0.576','congruent',76,'twoD'],['0.978','0.46','congruent',65,'twoD'],['0.96','0.912','incongruent',65,'twoD'],['0.135','0.68','incongruent',76,'twoD'],
+        ['0.378','0.31','congruent',65,'twoD'],['0.12','0.763','congruent',76,'twoD'],['0.715','0.77','incongruent',76,'twoD'],['0.89','0.266','incongruent',65,'twoD'],
+        ['0.32','0.388','congruent',76,'twoD'],['0.967','0.24','congruent',65,'twoD'],['0.88','0.816','incongruent',65,'twoD'],['0.241','0.95','incongruent',76,'twoD'],
+      ]
+
+      var dcstims_3 = []
+      for (i=0; i<56; i++){
+        stims_3 = [{
+          stimulus:'<div class = decision-left> '+ stimuli_3[i][0] +' </div>' +
+                '<div class = decision-right> '+ stimuli_3[i][1] +' </div>',
+          data:{
+            congruency: stimuli_3[i][2],
+            correct_ans: stimuli_3[i][3],
+            item_id: stimuli_3[i][4]
+          }
+        }]
+        for (a = 0; a<stims_3.length; a++){
+          dcstims_3.push(stims_3[a])
+        }
+            }
+
+      var dcstims_3_rand = jsPsych.randomization.repeat(dcstims_3, 1);
+
+      var dc_test_3 = {
+        timeline:[
+          {
+            type:'html-keyboard-response',
+            stimulus: jsPsych.timelineVariable('stimulus'),
+            choices:['a','l'],
+            data: jsPsych.timelineVariable('data'),
+            on_finish: function(data){
+            data.correct = data.key_press == data.correct_ans;
+            jsPsych.data.addDataToLastTrial({
+              SubjectID: subject_id,
+              trial_id:'T1dcpost2',
+              condition: condition_id,
+          })}},
+        ],
+        timeline_variables: dcstims_3_rand,
+      }
+
+      var end_block = {
+      timeline: [
+        {
+          type: 'instructions',
+          pages:['<p class=block-text> This is the end!</p> '+
+                    '<p class=block-text> Thank you for your participation!</p> '],
+          data:{
+            trial_id: 'instruction'
+        },
+        show_clickable_nav:true,
+        allow_keys : false,
+    }]};
+
+
+      /* participants will be either receive feedback or not depending on their conditions. */
+      var timeline = [fullscreen];
+      if (condition_id == "2"){
+        timeline = timeline.concat([insdc_1,dc_test_0,insdc_2,dc_test_2,insdc_2,dc_test_3,end_block]);
+      }else if (condition_id == "1"){
+        timeline = timeline.concat([insdc_1,dc_test_1,insdc_2,dc_test_2,insdc_2,dc_test_3,end_block]);
+      }else{
+         alert("You entered the wrong id. Please close the window and rerun the study.")
+      }
+
+
+      function getBrowserInfo()
+  {
+      var ua = navigator.userAgent, tem,
+      M = ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
+      if(/trident/i.test(M[1]))
+      {
+              tem=  /\brv[ :]+(\d+)/g.exec(ua) || [];
+              return 'IE '+(tem[1] || '');
+      }
+      if(M[1]=== 'Chrome')
+      {
+              tem= ua.match(/\b(OPR|Edge)\/(\d+)/);
+              if(tem!= null) return tem.slice(1).join(' ').replace('OPR', 'Opera');
+      }
+      M = M[2]? [M[1], M[2]]: [navigator.appName, navigator.appVersion, '-?'];
+      if((tem= ua.match(/version\/(\d+)/i))!= null)
+              M.splice(1, 1, tem[1]);
+      return { 'browser': M[0], 'version': M[1] };
+  }
+
+      /* check browser using */
+      var browserInfo = getBrowserInfo();
+      if(browserInfo.browser !== 'Chrome' && browserInfo.browser !== 'Firefox' && browserInfo.browser !== 'Safari')
+      {
+
+          alert('This experiment only has support for Google Chrome, Safari or Mozilla Firefox.'+' Please reopen the experiment in one of these browsers.');
+
+      }
+      else  // Code to run experiment
+      {
+          /* start the experiment */
+              jsPsych.init({
+                  timeline: timeline,
+                  on_finish: function() {
+                    jsPsych.data.displayData(); // You can make edits here to save data to the online testing platform.
+                  }
+              })
+        }
+
+      </script>
+    </html>

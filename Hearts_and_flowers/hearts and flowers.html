@@ -1,0 +1,527 @@
+<!doctype html>
+<html>
+
+    <head>
+        <title>Hearts and Flowers</title>
+        <!-- Load jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+         <!-- Load the jspsych library and plugins -->
+        <script src="jspsych-6.0.5/jspsych.js"></script>
+        <script src="jspsych-6.0.5/plugins/jspsych-html-keyboard-response.js"></script>
+        <script src="jspsych-6.0.5/plugins/jspsych-image-keyboard-response.js"></script>
+        <script src="jspsych-6.0.5/plugins/jspsych-instructions.js"></script>
+        <script src="jspsych-6.0.5/plugins/jspsych-fullscreen.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="jspsych-6.0.5/css/jspsych.css" rel="stylesheet" type="text/css"></link>
+        <link href="jspsych-6.0.5/css/style.css" rel="stylesheet" type="text/css"></link>
+        <style>
+        .jspsych-survey-text-question  { font-size: 30px; }
+        .jspsych-survey-text-preamble  { font-size: 30px; }
+        .jspsych-survey-text-response  { font-size: 30px; }
+        </style>
+    </head>
+
+    <body>
+    </body>
+
+    <script>
+
+
+     var fullscreen = {
+       type: 'fullscreen',
+       fullscreen_mode:true,
+     };
+        //Ask for ID
+        var subject_id = prompt("Please enter student subject ID");
+
+
+     // Hearts and Flowers test //
+     var insheart = {
+       type: 'instructions',
+       data: {
+         trial_id: 'instruction'
+       },
+       pages: [
+       '<div class=block-text> Press on the SAME side as the heart using the A and L keys.</p>'+
+       '<p><img src = "img/heart.jpg"> </img> </p>'+
+       '<img src = "img/heart2.jpg"> </img>'+
+         '<p>Go as fast as you can, while making as few mistakes as possible!</p>'+
+         '<p>We are going to play now.</p>'+
+         '<p>Press Sapce to begin.</p>'
+       ],
+       allow_keys:true,
+       key_forward:32,
+     };
+
+     var insheart2 = {
+         type: 'instructions',
+         data: {
+           trial_id: 'instruction'
+         },
+         pages:[
+         '<div class=block-text>Remember to press on the SAME side as the heart.</p>'+
+           '<p> Let us try again.</p>'+
+           '<p> Press Space to continue </p>'
+
+         ],
+         allow_keys:true,
+         key_forward:32,
+     };
+
+     var insflower = {
+       type: 'instructions',
+       data: {
+         trial_id: 'instruction'
+       },
+       pages: [
+       '<div class=block-text> Press on the OPPOSITE side as the flower using the A and L keys.</p>'+
+       '<p><img src = "img/flower2.jpg"> </img> </p>'+
+       '<img src = "img/flower.jpg"> </img>'+
+         '<p>Go as fast as you can, while making as few mistakes as possible!</p>'+
+         '<p>We are going to play now.</p>'+
+         '<p>Press Sapce to begin.</p>'
+       ],
+       allow_keys:true,
+       key_forward:32,
+     };
+
+     var insflower2 = {
+         type: 'instructions',
+         data: {
+           trial_id: 'instruction'
+         },
+         pages:[
+         '<div class=block-text>Remember to press on the OPPOSITE side as the flower.</p>'+
+           '<p> Let us try again.</p>'+
+           '<p> Press Space to continue </p>'
+         ],
+         allow_keys:true,
+         key_forward:32,
+     };
+
+     var insprac = {
+       type: 'instructions',
+       data: {
+         trial_id: 'instruction'
+       },
+       pages:[
+       '<div class=block-text>That was a practice. Are you ready to play some more?</p>'+
+         '<p> Remember to go as fast as you can, while making as few mistakes as possible!</p>'
+     //    '<p> Press Space to continue </p>'
+       ],
+       allow_keys:true,
+       key_forward:32,
+     };
+
+     var insmix = {
+       type: 'instructions',
+       data: {
+         trial_id: 'instruction'
+       },
+       pages: [
+       '<div class=block-text> Now let us do it for both:</p>'+
+         '<p>Press on the SAME side as the heart and</p>'+
+         '<p><img src = "img/heart2.jpg"> </img> </p>'+
+         '<p>Press on the OPPOSITE side as the flower.<p>'+
+         '<p><img src = "img/flower2.jpg"> </img> </p>'+
+         '<p>Go as fast as you can, while making as few mistakes as possible!</p>'+
+         '<p>We are going to play now.</p>'+
+         '<p>Press Sapce to begin.</p>'
+       ],
+       allow_keys:true,
+       key_forward:32,
+     };
+
+     var insmix2 = {
+       type: 'instructions',
+       data: {
+         trial_id: 'instruction'
+       },
+       pages: [
+       '<div class=block-text> Remember to press on the SAME side as the heart and </p>'+
+         '<p> on the OPPOSITE side as the flower.<p>'+
+         '<p>Let us try again.</p>'+
+         '<p>Press Sapce to continue.</p>'
+       ],
+       allow_keys:true,
+       key_forward:32,
+     };
+
+     var end_block = {
+     timeline: [
+       {
+         type: 'instructions',
+         pages:['<p class=block-text> This is the end!</p> '+
+                   '<p class=block-text> Thank you for your participation!</p> '],
+         data:{
+           trial_id: 'instruction'
+       },
+       show_clickable_nav:true,
+       allow_keys : false,
+   }]};
+
+
+   // Heart session
+     var heartprac = {
+       timeline:[
+         {
+           type:'image-keyboard-response',
+           stimulus:'img/fixation.png',
+           choices:jsPsych.NO_KEYS,
+           trial_duration:500
+         },
+         {
+           type:'image-keyboard-response',
+           stimulus:'img/blank.png',
+           choices:jsPsych.NO_KEYS,
+           trial_duration:500
+         },
+       {
+         type:'image-keyboard-response',
+         stimulus: jsPsych.timelineVariable('stimulus'),
+         choices: ['a','l'],
+         data:jsPsych.timelineVariable('data'),
+         response_ends_trial: true,
+         stimulus_duration:750,
+         trial_duration:1250,
+     }
+     ],
+     timeline_variables:[
+     {stimulus:"img/heart2.png",data:{correct_ans:76}},
+     {stimulus:"img/heart.png",data:{correct_ans:65}},
+     {stimulus:"img/heart2.png",data:{correct_ans:76}},
+     {stimulus:"img/heart.png",data:{correct_ans:65}},
+    ],
+     on_finish: function(data){
+       data.correct = data.key_press == data.correct_ans;
+       jsPsych.data.addDataToLastTrial({
+     trial_id: 'heartpractice',
+   });
+     }
+   }
+
+
+     var hearttest = {
+       timeline:[
+         {
+           type:'image-keyboard-response',
+           stimulus:'img/fixation.png',
+           choices:jsPsych.NO_KEYS,
+           trial_duration:500
+         },
+         {
+           type:'image-keyboard-response',
+           stimulus:'img/blank.png',
+           choices:jsPsych.NO_KEYS,
+           trial_duration:500
+         },
+       {
+         type:'image-keyboard-response',
+         stimulus: jsPsych.timelineVariable('stimulus'),
+         choices: ['a','l'],
+         data:jsPsych.timelineVariable('data'),
+         response_ends_trial: true,
+         stimulus_duration:750,
+         trial_duration:1250,
+   }
+     ],
+     timeline_variables:[
+     {stimulus:"img/heart.png",data:{correct_ans:65}},
+     {stimulus:"img/heart2.png",data: {correct_ans:76}},
+     {stimulus:"img/heart.png",data:{correct_ans:65}},
+     {stimulus:"img/heart.png",data:{correct_ans:65}},
+     {stimulus:"img/heart2.png",data: {correct_ans:76}},
+     {stimulus:"img/heart.png",data:{correct_ans:65}},
+     {stimulus:"img/heart.png",data:{correct_ans:65}},
+     {stimulus:"img/heart2.png",data: {correct_ans:76}},
+     {stimulus:"img/heart2.png",data: {correct_ans:76}},
+     {stimulus:"img/heart2.png",data: {correct_ans:76}},
+     {stimulus:"img/heart.png",data:{correct_ans:65}},
+     {stimulus:"img/heart2.png",data: {correct_ans:76}},
+   ],
+     on_finish: function(data){
+       data.correct = data.key_press == data.correct_ans;
+       jsPsych.data.addDataToLastTrial({
+     trial_id: 'hearttest',
+   });
+     }
+     }
+
+     var heartline = {
+       timeline:[insheart2,heartprac],
+       conditional_function:function(){
+         var heartcorr = jsPsych.data.get().filter({trial_id:'heartpractice',correct:false}).count();
+       if (heartcorr>1){
+         return true;
+       }else{
+         return false;
+       }
+     }
+   }
+
+   // Flower session
+     var flowerprac = {
+       timeline:[
+         {
+           type:'image-keyboard-response',
+           stimulus:'img/fixation.png',
+           choices:jsPsych.NO_KEYS,
+           trial_duration:500
+         },
+         {
+           type:'image-keyboard-response',
+           stimulus:'img/blank.png',
+           choices:jsPsych.NO_KEYS,
+           trial_duration:500
+         },
+       {
+         type:'image-keyboard-response',
+         stimulus: jsPsych.timelineVariable('stimulus'),
+         choices: ['a','l'],
+         data:jsPsych.timelineVariable('data'),
+         response_ends_trial: true,
+         stimulus_duration:750,
+         trial_duration:1250,
+     }
+     ],
+     timeline_variables:[
+     {stimulus:"img/flower2.png",data:{correct_ans:65}},
+     {stimulus:"img/flower.png",data:{correct_ans:76}},
+     {stimulus:"img/flower2.png",data:{correct_ans:65}},
+     {stimulus:"img/flower.png",data:{correct_ans:76}},
+    ],
+     on_finish: function(data){
+       data.correct = data.key_press == data.correct_ans;
+       jsPsych.data.addDataToLastTrial({
+     trial_id: 'flowerpractice',
+   });
+     }
+   }
+
+
+     var flowertest = {
+       timeline:[
+         {
+           type:'image-keyboard-response',
+           stimulus:'img/fixation.png',
+           choices:jsPsych.NO_KEYS,
+           trial_duration:500
+         },
+         {
+           type:'image-keyboard-response',
+           stimulus:'img/blank.png',
+           choices:jsPsych.NO_KEYS,
+           trial_duration:500
+         },
+       {
+         type:'image-keyboard-response',
+         stimulus: jsPsych.timelineVariable('stimulus'),
+         choices: ['a','l'],
+         data:jsPsych.timelineVariable('data'),
+         response_ends_trial: true,
+         stimulus_duration:750,
+         trial_duration:1250,
+   }
+     ],
+     timeline_variables:[
+     {stimulus:"img/flower2.png",data:{correct_ans:65}},
+     {stimulus:"img/flower2.png",data: {correct_ans:65}},
+     {stimulus:"img/flower2.png",data:{correct_ans:65}},
+     {stimulus:"img/flower.png",data:{correct_ans:76}},
+     {stimulus:"img/flower.png",data: {correct_ans:76}},
+     {stimulus:"img/flower2.png",data:{correct_ans:65}},
+     {stimulus:"img/flower2.png",data:{correct_ans:65}},
+     {stimulus:"img/flower.png",data: {correct_ans:76}},
+     {stimulus:"img/flower2.png",data: {correct_ans:65}},
+     {stimulus:"img/flower.png",data: {correct_ans:76}},
+     {stimulus:"img/flower.png",data:{correct_ans:76}},
+     {stimulus:"img/flower.png",data: {correct_ans:76}},
+   ],
+     on_finish: function(data){
+       data.correct = data.key_press == data.correct_ans;
+       jsPsych.data.addDataToLastTrial({
+     trial_id: 'flowertest',
+   });
+     }
+     }
+
+     var flowerline = {
+       timeline:[insflower2,flowerprac],
+       conditional_function:function(){
+         var flowercorr = jsPsych.data.get().filter({trial_id:'flowerpractice',correct:false}).count();
+       if (flowercorr>1){
+         return true;
+       }else{
+         return false;
+       }
+     }
+   }
+
+   // Mix session
+     var mixprac = {
+       timeline:[
+         {
+           type:'image-keyboard-response',
+           stimulus:'img/fixation.png',
+           choices:jsPsych.NO_KEYS,
+           trial_duration:500
+         },
+         {
+           type:'image-keyboard-response',
+           stimulus:'img/blank.png',
+           choices:jsPsych.NO_KEYS,
+           trial_duration:500
+         },
+       {
+         type:'image-keyboard-response',
+         stimulus: jsPsych.timelineVariable('stimulus'),
+         choices: ['a','l'],
+         data:jsPsych.timelineVariable('data'),
+         response_ends_trial: true,
+         stimulus_duration:750,
+         trial_duration:1250,
+     }
+     ],
+     timeline_variables:[
+     {stimulus:"img/heart.png",data:{correct_ans:65}},
+     {stimulus:"img/flower2.png",data:{correct_ans:65}},
+     {stimulus:"img/heart2.png",data:{correct_ans:76}},
+     {stimulus:"img/flower.png",data:{correct_ans:76}},
+    ],
+     on_finish: function(data){
+       data.correct = data.key_press == data.correct_ans;
+       jsPsych.data.addDataToLastTrial({
+     trial_id: 'mixpractice',
+   });
+     }
+   }
+
+
+     var mixtest = {
+       timeline:[
+         {
+           type:'image-keyboard-response',
+           stimulus:'img/fixation.png',
+           choices:jsPsych.NO_KEYS,
+           trial_duration:500
+         },
+         {
+           type:'image-keyboard-response',
+           stimulus:'img/blank.png',
+           choices:jsPsych.NO_KEYS,
+           trial_duration:500
+         },
+       {
+         type:'image-keyboard-response',
+         stimulus: jsPsych.timelineVariable('stimulus'),
+         choices: ['a','l'],
+         data:jsPsych.timelineVariable('data'),
+         response_ends_trial: true,
+         stimulus_duration:750,
+         trial_duration:1250,
+   }
+     ],
+     timeline_variables:[
+       {stimulus:"img/flower.png",data:{correct_ans:76,rulechange:false}},
+       {stimulus:"img/flower2.png",data: {correct_ans:65,rulechange:false}},
+       {stimulus:"img/heart.png",data:{correct_ans:65,rulechange:true}},
+       {stimulus:"img/flower.png",data:{correct_ans:76,rulechange:true}},
+       {stimulus:"img/flower2.png",data: {correct_ans:65,rulechange:false}},
+       {stimulus:"img/heart.png",data:{correct_ans:65,rulechange:true}},
+       {stimulus:"img/heart2.png",data: {correct_ans:76,rulechange:false}},
+       {stimulus:"img/flower.png",data:{correct_ans:76,rulechange:true}},
+       {stimulus:"img/heart.png",data:{correct_ans:65,rulechange:true}},
+     {stimulus:"img/flower2.png",data:{correct_ans:65,rulechange:true}},
+     {stimulus:"img/flower2.png",data: {correct_ans:65,rulechange:false}},
+     {stimulus:"img/heart2.png",data: {correct_ans:76,rulechange:true}},
+     {stimulus:"img/heart.png",data:{correct_ans:65,rulechange:false}},
+     {stimulus:"img/heart.png",data:{correct_ans:65,rulechange:false}},
+     {stimulus:"img/flower2.png",data: {correct_ans:65,rulechange:true}},
+     {stimulus:"img/heart.png",data:{correct_ans:65,rulechange:true}},
+     {stimulus:"img/heart2.png",data: {correct_ans:76,rulechange:false}},
+     {stimulus:"img/flower2.png",data:{correct_ans:65,rulechange:true}},
+     {stimulus:"img/flower.png",data:{correct_ans:76,rulechange:false}},
+     {stimulus:"img/flower2.png",data:{correct_ans:65,rulechange:false}},
+     {stimulus:"img/heart2.png",data: {correct_ans:76,rulechange:true}},
+     {stimulus:"img/flower.png",data: {correct_ans:76,rulechange:true}},
+     {stimulus:"img/flower.png",data: {correct_ans:76,rulechange:false}},
+     {stimulus:"img/heart2.png",data: {correct_ans:76,rulechange:true}},
+     {stimulus:"img/heart.png",data:{correct_ans:65,rulechange:false}},
+     {stimulus:"img/flower.png",data: {correct_ans:76,rulechange:true}},
+     {stimulus:"img/heart.png",data:{correct_ans:65,rulechange:true}},
+     {stimulus:"img/heart2.png",data: {correct_ans:76,rulechange:false}},
+     {stimulus:"img/flower2.png",data: {correct_ans:65,rulechange:true}},
+     {stimulus:"img/flower.png",data: {correct_ans:76,rulechange:false}},
+     {stimulus:"img/heart2.png",data: {correct_ans:76,rulechange:true}},
+     {stimulus:"img/heart2.png",data: {correct_ans:76,rulechange:false}},
+   ],
+     on_finish: function(data){
+       data.correct = data.key_press == data.correct_ans;
+       jsPsych.data.addDataToLastTrial({
+         trial_id: 'mixtest',
+         Switch: data.rulechange,
+   });
+     }
+     }
+
+     var mixline = {
+       timeline:[insmix2,mixprac],
+       conditional_function:function(){
+         var mixcorr = jsPsych.data.get().filter({trial_id:'mixpractice',correct:false}).count();
+       if (mixcorr>1){
+         return true;
+       }else{
+         return false;
+       }
+     }
+   }
+
+
+
+    var timeline = [fullscreen,insheart,heartprac,heartline,insprac,hearttest,insflower,flowerprac,flowerline,insprac,flowertest,insmix,mixprac,mixline,insprac,mixtest,end_block];
+    var images = ['img/heart.png','img/heart2.png','img/flower.png','img/flower2.png','img/fixation.png','img/blank.png']
+
+
+      /* check which browser the participant is using */
+      function getBrowserInfo()
+  {
+      var ua = navigator.userAgent, tem,
+      M = ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
+      if(/trident/i.test(M[1]))
+      {
+              tem=  /\brv[ :]+(\d+)/g.exec(ua) || [];
+              return 'IE '+(tem[1] || '');
+      }
+      if(M[1]=== 'Chrome')
+      {
+              tem= ua.match(/\b(OPR|Edge)\/(\d+)/);
+              if(tem!= null) return tem.slice(1).join(' ').replace('OPR', 'Opera');
+      }
+      M = M[2]? [M[1], M[2]]: [navigator.appName, navigator.appVersion, '-?'];
+      if((tem= ua.match(/version\/(\d+)/i))!= null)
+              M.splice(1, 1, tem[1]);
+      return { 'browser': M[0], 'version': M[1] };
+  }
+
+      /* check browser using */
+      var browserInfo = getBrowserInfo();
+      if(browserInfo.browser !== 'Chrome' && browserInfo.browser !== 'Firefox' && browserInfo.browser !== 'Safari')
+      {
+
+          alert('This experiment only has support for Google Chrome, Safari or Mozilla Firefox.'+' Please reopen the experiment in one of these browsers.');
+
+      }
+      else  // Code to run experiment
+      {
+          /* start the experiment */
+              jsPsych.init({
+                  timeline: timeline,
+                  preload_images:images,
+                  on_finish: function() {
+                      jsPsych.data.displayData(); // You can make edits here to save data to the online testing platform.
+                  }
+              })
+        }
+
+      </script>
+    </html>
