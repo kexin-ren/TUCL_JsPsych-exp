@@ -4,12 +4,12 @@
 This repository contains part of online experiment scripts I programmed using JavaScript and [JsPsych](https://www.jspsych.org) (de Leeuw, 2015), while working in the Temple University Cognition and Learning Lab.
 
 ### Number Comparisons:
-Folder include the script **number comparisons.html** programmed to show the participants two numbers at the same time and ask them to choose the larger one, in terms of the magnitudes.
+Folder includes the script **number comparisons.html** programmed to show the participants two numbers at the same time and ask them to choose the larger one, in terms of the magnitudes.
 After each decision, the participants will receive feedback on the correctness of their choice and on the correct relation between two numbers.
 The script will automatically record the participants' accuracy and RT which can be used in data analyses.
 
 ### Hearts and Flowers:
-Folder include the script **hearts and flowers.html** that was programmed based on the Hearts and Flowers Task (Wright & Diamond, 2014), which was designed to measure inhibitory control.
+Folder includes the script **hearts and flowers.html** that was programmed based on the Hearts and Flowers Task (Wright & Diamond, 2014), which was designed to measure inhibitory control.
 On each trial, either a red heart or a red flower appears on the left or right side of the screen.
 The participants are asked to press the key on the same side as the heart and on the opposite side as the flower.
 There are three blocks of the test: a heart-only block, a flower-only block, and a mixed hearts and flowers block.
